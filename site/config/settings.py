@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'HackTJ2020.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
