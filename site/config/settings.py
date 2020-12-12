@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'front_end',
+    'frontend',
     'api',
 ]
 
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'HackTJ2020.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
