@@ -19,5 +19,6 @@ from .views import *
 
 urlpatterns = [
     path('ping/', PingView.as_view()),
-    path('', GetProfile.as_view())
+    path('', GetProfile.as_view()),
+    path('auth/create/user', CreateUser.as_view()),
 ]

@@ -41,8 +41,20 @@ INSTALLED_APPS = [
     'rest_framework',
     'frontend',
     'api',
-    'corsheaders',
+    'djoser',
+    'rest_framework.authtoken',
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -94,7 +106,7 @@ DATABASES = {
         'USER' : 'spaceout',
         'PASSWORD': 'spaceout',
         'HOST' : 'localhost',
-        'PORT' : 42035,
+        'PORT' : 35767,
     }
 }
 
@@ -123,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 
@@ -138,10 +150,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ## Custom
-
-AUTH_USER_MODEL = 'api.User'
-CORS_ORIGIN_ALLOW_ALL = True
-
-# CORS_ORIGIN_WHITELIST = (
-#     'http//localhost:8000',
-# )
