@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'frontend',
     'api',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -138,3 +140,8 @@ STATIC_URL = '/static/'
 ## Custom
 
 AUTH_USER_MODEL = 'api.User'
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ORIGIN_WHITELIST = (
+#     'http//localhost:8000',
+# )
