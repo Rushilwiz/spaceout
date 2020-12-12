@@ -1,3 +1,4 @@
 .idea/
 __pycache__/
-static/
+db.sqlite3
+front_end/static/front_end/
