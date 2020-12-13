@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <section class="header11 cid-qv7jHqwEI9 mbr-fullscreen mbr-parallax-background" id="header11-5p" data-rv-view="9263">
+    <section class="header11 cid-qv7jHqwEI9 mbr-fullscreen mbr-parallax-background" id="header11-5p" data-rv-view="9263" style="background-image: url('{% static 'images/space.png' %}');">
 
     <!-- Block parameters controls (Blue "Gear" panel) -->
 
@@ -47,8 +47,10 @@
             <br>
             <br>
             <div class="class_cont">
-                <a href="/out/classes/{{ user_class.id }}"><h1>{{ user_class.name }}</h1></a>
-                <h3>{{ user_class.teacher }}; &emsp; Period: {{ user_class.period }}</h3>
+                <a href="/out/classes/{{ user_class.id }}" style="text-decoration: underline; color: white;"><h1><b> {{ user_class.name }} </b></h1></a>
+                <br>
+                <h3>{{ user_class.teacher }}</h3>
+                <h3>Period: {{ user_class.period }}</h3>
             </div>
         {% endfor %}
     </div>

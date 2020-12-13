@@ -2,14 +2,39 @@
 {% load static %}
 
 {% block content %}
-<section class="mbr-section content4 cid-qxVpIJ8WtD" id="content4-na" data-rv-view="8245" style="min-height: 100vh;">
+        <section class="header11 cid-qv7jHqwEI9 mbr-fullscreen mbr-parallax-background" id="header11-5p" data-rv-view="9263" style="background-image: url('{% static 'images/class.png' %}');">
+
+    <!-- Block parameters controls (Blue "Gear" panel) -->
+
+    <!-- End block parameters -->
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);">
+    </div>
+    <div class="container align-left">
+        <div class="media-container-column mbr-white col-md-12">
+
+            <h1 class="mbr-section-title py-3 mbr-fonts-style display-1"><strong>Welcome to your class page for {{ class.name }}</strong>
+            </h1>
+            <p class="mbr-text py-3 mbr-fonts-style display-5">
+                You can view and edit your class information here!</p>
+            <div class="mbr-section-btn py-4">
+                <a class="btn btn-md btn-white-outline display-4"
+                                 href="/out/classes/{{ class.id }}/edit">EDIT</a>
+            </div>
+            <br>
+        </div>
+        <div class="media-container-column mbr-white col-md-12 m-t-10 p-t-10"><div class='icon-scroll'><div/></div>
+    </div>
+
+</section>
+<section class="mbr-section content4 cid-qxVpIJ8WtD" id="content4-na" data-rv-view="8245">
 
 
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
                 <h2 class="align-center pb-3 mbr-fonts-style display-2">
-                    Your Class: {{ class.name }}</h2>
+                    </h2>
             </div>
         </div>
         <hr style="border-color: white;">
@@ -17,6 +42,16 @@
         <div class="class_cont container class center centered m-10">
             <h3>Teacher: {{ class.teacher }}</h3>
         </div>
+        <br><br><br><br>
+        <div class="class_cont container class center centered m-10">
+            <h3>Period: {{ class.period }}</h3>
+        </div>
+        <br><br><br><br>
+        <div class="class_cont container class center centered m-10">
+            <h3><a href="{{ class.link }}">Click here to navigate to your class!</a></h3>
+        </div>
+
+
     </div>
 </section>
 {% endblock content %}
@@ -28,5 +63,60 @@
     .class_cont {
         text-align: center;
     }
+
+    </style>
+
+    <style>
+    .classes{
+        color: white;
+    }
+    .class_cont {
+        text-align: center;
+    }
+    hr {
+        border-color: white;
+    }
+
+    .icon-scroll,
+    .icon-scroll:before {
+        position: absolute;
+        left: 50%;
+        top: 90%;
+    }
+
+    .icon-scroll {
+      width: 40px;
+      height: 70px;
+      margin-left: -20px;
+      top: 50%;
+      margin-top: -35px;
+      box-shadow: inset 0 0 0 1px #fff;
+      border-radius: 25px;
+    }
+
+    .icon-scroll:before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      margin-left: -4px;
+      top: 8px;
+      border-radius: 4px;
+      animation-duration: 1.5s;
+      animation-iteration-count: infinite;
+      animation-name: scroll;
+    }
+
+    @keyframes scroll {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(46px);
+        }
+    }
+
+
     </style>
 {% endblock %}

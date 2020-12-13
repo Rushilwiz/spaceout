@@ -60,8 +60,28 @@ def class_form_view(request):
     return render(request, "frontend/classroomForm.html", {"form": form})
 
 
+@login_required
 def classroom_view(request, id):
     classroom = Classroom.objects.get(id=id)
     if classroom.student.user.pk != request.user.pk:
         return HttpResponseForbidden('You do not have access to this class')
     return render(request, "frontend/class.html", {'class': classroom})
+
+
+def classroom_edit_view(request, id):
+    classroom = Classroom.objects.get(id=id)
+    if classroom.student.user.pk != request.user.pk:
+        return HttpResponseForbidden('You do not have access to this class')
+
+
+    if request.method == 'POST':
+        form = ClassroomForm(request.POST, instance=classroom)
+
+        if form.is_valid():
+            classroom = form.save()
+            classroom.save()
+            return redirect(f'out/classes/{id}')
+
+    form = ClassroomForm(instance=classroom)
+
+    return render(request, 'frontend/editClassroom.html', {'form': form})
