@@ -22,7 +22,7 @@ import datetime
 import text_to_speech
 from requests.auth import HTTPBasicAuth
 
-API_ENDPOINT = 'http://localhost:8000/api/'
+API_ENDPOINT = 'http://donot.space/api/'
 
 def on_exit(username, password, request):
     with open('current_transcript', 'r') as f:
