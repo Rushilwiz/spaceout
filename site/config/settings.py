@@ -100,9 +100,9 @@ DATABASES = {
 #        'ENGINE' : 'django_cockroachdb',
 #        'NAME' : 'spaceout',
 #        'USER' : 'spaceout',
-#        'PASSWORD': 'spaceout',
-#        'HOST' : 'localhost',
-#        'PORT' : 35767,
+#        'PASSWORD': r"eVYfYQ`W.`y3AW%'[hdyVR.cn,_[mP5h,$~.7#(8SM8@Z8=T:(",
+#        'HOST' : 'spaceout-86g.gcp-us-east4.cockroachlabs.cloud',
+#        'PORT' : 26257,
 #    }
 # }
 
