@@ -25,7 +25,7 @@ SECRET_KEY = "^0n$28f^vwgqqrt2y5o-c3-d8pgzcgv0%uqd%j_c-!!1a(te+!"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['donot.space']
 
 
 # Application definition
@@ -88,24 +88,23 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 #DATABASES = {
-#   'default': {
-#       'ENGINE' : 'django_cockroachdb',
-#       'NAME' : 'spaceout',
-#       'USER' : 'spaceout',
-#       'PASSWORD': r"eVYfYQ`W.`y3AW%'[hdyVR.cn,_[mP5h,$~.7#(8SM8@Z8=T:(",
-#       'HOST' : 'spaceout-86g.gcp-us-east4.cockroachlabs.cloud',
-#       'PORT' : 26257,
-#   }
+#    "default": {
+#        "ENGINE": "django.db.backends.sqlite3",
+#        "NAME": BASE_DIR / "db.sqlite3",
+#    }
 #}
 
+DATABASES = {
+   'default': {
+       'ENGINE' : 'django_cockroachdb',
+       'NAME' : 'spaceout',
+       'USER' : 'spaceout',
+       'PASSWORD': r"eVYfYQ`W.`y3AW%'[hdyVR.cn,_[mP5h,$~.7#(8SM8@Z8=T:(",
+       'HOST' : 'spaceout-86g.gcp-us-east4.cockroachlabs.cloud',
+       'PORT' : 26257,
+   }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
