@@ -16,21 +16,59 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('profile_pic', models.ImageField(default='default.jpg', upload_to='profile_pics')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "profile_pic",
+                    models.ImageField(default="default.jpg", upload_to="profile_pics"),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Classroom',
+            name="Classroom",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=30)),
-                ('teacher', models.CharField(max_length=30)),
-                ('period', models.CharField(blank=True, max_length=1, unique=True, verbose_name=django.db.models.fields.PositiveIntegerField)),
-                ('student', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=30)),
+                ("teacher", models.CharField(max_length=30)),
+                (
+                    "period",
+                    models.CharField(
+                        blank=True,
+                        max_length=1,
+                        unique=True,
+                        verbose_name=django.db.models.fields.PositiveIntegerField,
+                    ),
+                ),
+                (
+                    "student",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="api.profile"
+                    ),
+                ),
             ],
         ),
     ]

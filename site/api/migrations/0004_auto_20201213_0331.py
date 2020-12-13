@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0003_auto_20201213_0246'),
+        ("api", "0003_auto_20201213_0246"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='classroom',
-            options={'ordering': ['period']},
+            name="classroom",
+            options={"ordering": ["period"]},
         ),
         migrations.AlterField(
-            model_name='classroom',
-            name='period',
+            model_name="classroom",
+            name="period",
             field=models.PositiveIntegerField(blank=True),
         ),
     ]

@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from frontend import urls as frontend_urls
 
 from api import urls as api_urls
+from frontend import urls as frontend_urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(api_urls)),
-    path('', include(frontend_urls)),
-    path('out/', include(frontend_urls)),
+    path("admin/", admin.site.urls),
+    path("api/", include(api_urls)),
+    path("", include(frontend_urls)),
+    path("out/", include(frontend_urls)),
 ]

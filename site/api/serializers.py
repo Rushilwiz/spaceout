@@ -7,13 +7,13 @@ from .models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'first_name', 'last_name', 'email']
+        fields = ["id", "username", "first_name", "last_name", "email"]
 
 
 class ClassroomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Classroom
-        fields = ['id', 'name', 'teacher', 'link', 'period']
+        fields = ["id", "name", "teacher", "link", "period"]
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -22,15 +22,18 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['id', 'user', 'classes']
+        fields = ["id", "user", "classes"]
+
 
 class ProfileDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['id', 'user']
+        fields = ["id", "user"]
+
 
 class ClassroomDetailSerializer(serializers.ModelSerializer):
     student = ProfileDetailSerializer()
+
     class Meta:
         model = Classroom
-        fields = ['id', 'name', 'teacher', 'link', 'period', 'student']
+        fields = ["id", "name", "teacher", "link", "period", "student"]
