@@ -22,10 +22,13 @@ class Profile(models.Model):
 
 
 class Classroom(models.Model):
-    student = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    student = models.ForeignKey(Profile, related_name='classes', on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     teacher = models.CharField(max_length=30)
-    period = models.CharField(models.PositiveIntegerField, blank=True, unique=True, max_length=1)
-
+    link = models.CharField(max_length=100)
+    period = models.PositiveIntegerField(blank=True)
     def __str__(self):
         return f"{self.student.user.username}'s Class: {self.name}"
+
+    class Meta:
+        ordering = ['period']

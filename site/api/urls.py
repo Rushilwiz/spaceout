@@ -19,6 +19,8 @@ from .views import *
 
 urlpatterns = [
     path('ping/', PingView.as_view()),
-    path('', GetProfile.as_view()),
-    path('auth/create/user/', CreateUser.as_view()),
+    path('user/', UserView.as_view()),
+    path('profile/', ProfileView.as_view()),
+    path('classes/', ClassroomView.as_view()),
+    path('classes/<int:class_id>', ClassroomDetail.as_view())
 ]

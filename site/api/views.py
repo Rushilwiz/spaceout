@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .serializers import *
+from .models import Profile
 
 
 # Create your views here.
@@ -34,43 +35,33 @@ def retry_on_exception(view, num_retries=3, on_failure=HttpResponse(status=500),
 
 
 class PingView(View):
-
     def get(self, request, *args, **kwargs):
-        return HttpResponse("python/django", status=200)
+        return HttpResponse("pong!", status=200)
 
 
-class GetProfile(APIView):
-    serializer_class = ProfileSerializer
-    lookup_url_kwarg = 'id'
+class UserView(APIView):
+    def get(self, request, format=None):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
 
-    def get(self, request):
-        pk = request.GET.get(self.lookup_url_kwarg)
+class ProfileView(APIView):
+    def get(self, request, format=None):
+        profile = Profile.objects.get(user=request.user)
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
 
-        if pk:
-            profile = User.objects.filter(id=pk)
-            if profile.exists():
-                user_profile = Profile.objects.get(user=profile[0])
-                data = self.serializer_class(user_profile).data
-                return Response(data, status=status.HTTP_200_OK)
-            return Response({'Profile Not Found': 'Invalid Profile id.'}, status=status.HTTP_404_NOT_FOUND)
-        return Response({'Bad Request': 'id parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
+class ClassroomView(APIView):
+    def get(self, request, format=None):
+        classes = Profile.objects.get(user=request.user).classes
+        serializer = ClassroomSerializer(classes, many=True)
+        return Response(serializer.data)
 
-
-class CreateUser(APIView):
-    serializer_class = UserSerializer
-
-    def post(self, request, format=None):
-        username = request.data.get('username')
-        email = request.data.get('email')
-        queryset1 = User.objects.filter(username=username)
-        queryset2 = User.objects.filter(email=email)
-        if queryset1.exists() or queryset2.exists():
-            pass
+class ClassroomDetail(APIView):
+    def get(self, request, *args, **kwargs):
+        class_id = self.kwargs.get('class_id', None)
+        classroom = Classroom.objects.get(id=class_id)
+        if request.user == classroom.student.user:
+            serializer = ClassroomDetailSerializer(classroom)
+            return Response(serializer.data)
         else:
-            user = User(email=email, username=username, password=request.data.get('password'))
-            user.save()
-            profile = Profile(user=user)
-            profile.save()
-            return Response(self.serializer_class(user).data, status=status.HTTP_201_CREATED)
-
-        return Response({'Bad Request': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_403_FORBIDDEN)
