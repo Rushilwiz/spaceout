@@ -9,7 +9,7 @@ from .forms import *
 
 # Create your views here.
 def register_view(request):
-    if request.user or request.user.is_authenticated:
+    if request.user.is_authenticated:
         return redirect('home')
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
