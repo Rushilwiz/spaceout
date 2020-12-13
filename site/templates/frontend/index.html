@@ -43,19 +43,19 @@
             <div class="navbar-brand">
 
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4"
-                                                     href="{% url 'home' %}"  style="font-size: 25px !important;">
+                                                     href="{% url 'landing_page' %}"  style="font-size: 25px !important;">
                         DO NOT SPACE OUT</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav nav-dropdown " data-app-modern-menu="true">
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link link text-white display-4"  style="font-size: 20px !important;" href="{% url 'classroom_form' %}" aria-expanded="false">
                     Classroom
                     </a>
                 </li>
-                {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link link text-white dropdown-toggle display-4"  style="font-size: 20px !important;" href="blog.html" data-toggle="dropdown-submenu" aria-expanded="false">
                     Profile

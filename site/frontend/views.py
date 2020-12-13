@@ -9,6 +9,8 @@ from .forms import *
 
 # Create your views here.
 def register_view(request):
+    if request.user or request.user.is_authenticated:
+        return redirect('home')
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -67,7 +69,7 @@ def classroom_view(request, id):
         return HttpResponseForbidden('You do not have access to this class')
     return render(request, "frontend/class.html", {'class': classroom})
 
-
+@login_required
 def classroom_edit_view(request, id):
     classroom = Classroom.objects.get(id=id)
     if classroom.student.user.pk != request.user.pk:
@@ -86,7 +88,8 @@ def classroom_edit_view(request, id):
 
     return render(request, 'frontend/editClassroom.html', {'form': form})
 
+
 def landing_page(request):
-    if request.user or request.user.is_authenticated:
+    if request.user.is_authenticated:
         return redirect('home')
     return render(request, 'frontend/landing.html')

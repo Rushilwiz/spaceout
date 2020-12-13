@@ -19,7 +19,7 @@
                 A speech to text program to help transcribe your online meetings!</p>
             <div class="mbr-section-btn py-4">
                 <a class="btn btn-md btn-white-outline display-4"
-                                 href="#">LEARN MORE</a>
+                                 href="#">DOWNLOAD DESKTOP PROGRAM</a>
             </div>
             <br>
         </div>
@@ -43,6 +43,7 @@
     <div class="container classes center centered m-10">
 <hr>
     <div class="m-b-10"></div>
+        {% if classes %}
         {% for user_class in classes %}
             <br>
             <br>
@@ -53,6 +54,9 @@
                 <h3>Period: {{ user_class.period }}</h3>
             </div>
         {% endfor %}
+    {% else %}
+        Create a new class by pressing Classroom in the navbar!
+    {% endif %}
     </div>
 
             <br>
