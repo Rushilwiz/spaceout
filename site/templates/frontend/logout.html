@@ -1,0 +1,24 @@
+{% extends 'frontend/index.html' %}
+{% block content %}
+        <section class="header11 cid-qv7jHqwEI9 mbr-fullscreen mbr-parallax-background" id="header11-5p" data-rv-view="9263">
+
+    <!-- Block parameters controls (Blue "Gear" panel) -->
+
+    <!-- End block parameters -->
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);">
+    </div>
+    <div class="container align-left">
+        <div class="media-container-column mbr-white col-md-12">
+
+            <h1 class="mbr-section-title py-3 mbr-fonts-style display-1"><strong>You have been logged out....</strong>
+            </h1>
+                <a class="btn btn-md btn-white-outline display-4"
+                                 href="{% url 'login' %}">Login again!</a>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+{% endblock content %}

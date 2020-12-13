@@ -38,7 +38,7 @@
 			<form class="login100-form validate-form" method="POST">
                 {% csrf_token %}
 				<span class="login100-form-title p-b-37">
-					Sign In
+					Create a new class!
 				</span>
 
                 {% for field in form %}
@@ -50,12 +50,12 @@
                 {% endfor %}
 				<div class="container-login100-form-btn m-b-10">
 					<button class="login100-form-btn">
-						Sign In
+						Create!
 					</button>
 				</div>
 				<div class="text-center">
-					<a href="{% url 'register' %}" class="txt2 hov1">
-						Sign Up
+					<a href="{% url 'home' %}" class="txt2 hov1">
+						Back
 					</a>
 				</div>
 			</form>

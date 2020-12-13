@@ -10,14 +10,84 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
     />
+
+    <link rel="stylesheet"
+          href="https://mobirise.com/bootstrap-template/assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="https://mobirise.com/bootstrap-template/assets/tether/tether.min.css">
+    <link rel="stylesheet" href="https://mobirise.com/bootstrap-template/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://mobirise.com/bootstrap-template/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="https://mobirise.com/bootstrap-template/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="https://mobirise.com/bootstrap-template/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="https://mobirise.com/bootstrap-template/assets/theme/css/style.css">
+    <link rel="stylesheet" href="https://mobirise.com/bootstrap-template/assets/mobirise/css/mbr-additional.css"
+          type="text/css">
+
       {% block head %}{% endblock head %}
   </head>
   <body>
+  <section class="menu thing cid-qv1frvgcz3" once="menu" id="menu1-5o" data-rv-view="9261">
+
+
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent" style="font-size: 20px !important;">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4"
+                                                     href="{% url 'home' %}"  style="font-size: 25px !important;">
+                        DO NOT SPACE OUT</a></span>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav nav-dropdown " data-app-modern-menu="true">
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4"  style="font-size: 20px !important;" href="{% url 'classroom_form' %}" aria-expanded="false">
+                    Classroom
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link link text-white dropdown-toggle display-4"  style="font-size: 20px !important;" href="blog.html" data-toggle="dropdown-submenu" aria-expanded="false">
+                    Profile
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="text-white dropdown-item" href="slider.html">
+                            <h6>
+                                Settings
+                            </h6>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>
     <div id="main">
       <div id="app">
           {% block content %}{% endblock content %}
       </div>
     </div>
+
+
+
+<script src="https://mobirise.com/bootstrap-template/assets/web/assets/jquery/jquery.min.js"></script>
+<script src="https://mobirise.com/bootstrap-template/assets/popper/popper.min.js"></script>
+<script src="https://mobirise.com/bootstrap-template/assets/tether/tether.min.js"></script>
+<script src="https://mobirise.com/bootstrap-template/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://mobirise.com/bootstrap-template/assets/smooth-scroll/smooth-scroll.js"></script>
+<script src="https://mobirise.com/bootstrap-template/assets/dropdown/js/script.min.js"></script>
+<script src="https://mobirise.com/bootstrap-template/assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+<script src="https://mobirise.com/bootstrap-template/assets/jarallax/jarallax.min.js"></script>
+<script src="https://mobirise.com/bootstrap-template/assets/theme/js/script.js"></script>
     {% block js %}{% endblock js %}
   </body>
 </html>

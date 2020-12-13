@@ -32,40 +32,19 @@
 <div class="login_container">
     <div class="container-login100" style="background-image: url("{% static 'login/images/bg-01.jpg' %}");">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-			<form class="login100-form validate-form">
+			<form class="login100-form validate-form" method="POST" action="{% url 'create_user' %}">
+                {% csrf_token %}
 				<span class="login100-form-title p-b-37">
 					Register
 				</span>
 
-				<div class="wrap-input100 validate-input m-b-10" data-validate="Enter username">
-					<input class="input100" type="username" name="username" placeholder="username">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input m-b-10" data-validate="Enter email">
-					<input class="input100" type="email" name="email" placeholder="email">
-					<span class="focus-input100"></span>
-				</div>
-
-                <div class="wrap-input100 validate-input m-b-10" data-validate="Enter first name">
-					<input class="input100" type="text" name="firstname" placeholder="first name">
-					<span class="focus-input100"></span>
-				</div>
-
-                <div class="wrap-input100 validate-input m-b-10" data-validate="Enter last name">
-					<input class="input100" type="text" name="lastname" placeholder="lastname">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input m-b-10" data-validate = "Enter password">
-					<input class="input100" type="password" name="pass1" placeholder="password">
-					<span class="focus-input100"></span>
-				</div>
-
-                <div class="wrap-input100 validate-input m-b-15" data-validate = "Confirm password">
-					<input class="input100" type="password" name="pass2" placeholder="confirm password">
-					<span class="focus-input100"></span>
-				</div>
+                {% for field in form %}
+                    <div class="wrap-input100 validate-input m-b-10" data-validate="Enter {{ field.label }}">
+                        <p style="color: red;">{{ field.errors }}</p>
+                        {{ field }}
+                        <span class="focus-input100"></span>
+				    </div>
+                {% endfor %}
 
 				<div class="container-login100-form-btn">
 					<button class="login100-form-btn">
@@ -73,21 +52,7 @@
 					</button>
 				</div>
 
-				<div class="text-center p-t-57 p-b-20">
-					<span class="txt1">
-						Or signin with
-					</span>
-				</div>
-
-				<div class="flex-c p-b-10">
-					<a href="#" class="login100-social-item">
-						<i class="fa fa-facebook-f"></i>
-					</a>
-
-					<a href="#" class="login100-social-item">
-						<img src="{% static 'login/images/icons/icon-google.png' %}" alt="GOOGLE">
-					</a>
-				</div>
+                <div class="m-b-10"></div>
 
 				<div class="text-center">
 					<a href="{% url 'login' %}" class="txt2 hov1">

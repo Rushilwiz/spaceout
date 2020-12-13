@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'djoser',
+    'crispy_forms'
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 REST_FRAMEWORK = {
@@ -150,3 +152,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
