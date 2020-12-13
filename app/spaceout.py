@@ -11,15 +11,111 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QApplication, QSplashScreen 
 
+from multiprocessing import Process, Queue
+
+import re
+import sys
 import webbrowser
 import requests
 import keyring
+import datetime
+import text_to_speech
 from requests.auth import HTTPBasicAuth
 
 API_ENDPOINT = 'http://localhost:8000/api/'
 
+def on_exit(username, password, request):
+    with open('current_transcript', 'r') as f:
+        first_line = f.readline()
+    print('FIRST LINE: ' + first_line)
+    print("SAM")
+    transcript = open(f'{first_line}.txt', w)
+    transcript.write(open('current_transcript', 'r').read())
+    transcript.close()
+
+def main():
+    
+    app = QtWidgets.QApplication(sys.argv)
+
+    try:
+        f = open('.userinfo')
+        username = f.read()
+        f.close()
+        isLoggedIn = True
+
+    except:
+        isLoggedIn = False
+
+    if not isLoggedIn:
+        Form = QtWidgets.QWidget()
+        ui = LoginForm()
+        ui.setupUI(Form)
+        Form.show()
+
+        sys.exit(app.exec_())
+    else:
+        password = keyring.get_password('spaceout', username)
+        r = requests.get(f'{API_ENDPOINT}profile', auth=HTTPBasicAuth(username, password)) 
+        if not r.ok:
+            raise Exception
+        
+        request = r.json()
+
+        
+        import atexit
+        atexit.register(on_exit, username, password, request)
+
+        ListenerWidget = QtWidgets.QWidget()
+        ui = Listener()
+        ui.setupUI(ListenerWidget, request['classes'], request['user']['first_name'])
+        ListenerWidget.show()
+
+        sys.exit(app.exec_())
+
+
+class Listener(object):
+    def setupUI(self, Form, classes, name):
+        Form.setObjectName("Form")
+        Form.resize(340, 202)
+        self.name = name
+        self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(30, 10, 271, 121))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.comboBox = QtWidgets.QComboBox(self.horizontalLayoutWidget)
+        self.comboBox.setObjectName("comboBox")
+        self.horizontalLayout.addWidget(self.comboBox)
+        self.play_pause = QtWidgets.QPushButton(Form)
+        self.play_pause.setGeometry(QtCore.QRect(50, 150, 241, 31))
+        self.play_pause.setObjectName("play_pause")
+        self.play_pause.clicked.connect(self.start_listener)
+
+        rooms = [f'Period {room["period"]} - {room["name"]} with {room["teacher"]}    ID:({room["id"]})' for room in classes]
+        self.comboBox.addItems(rooms)
+
+        self.retranslateUI(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUI(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("SpaceOut", "SpaceOut"))
+        self.play_pause.setText(_translate("Form", "Start Listening"))
+
+    
+    def start_listener(self):
+        choice = self.comboBox.currentText()
+        print(choice)
+        result = re.search('ID:(.*)', choice)
+        class_id = result.group(1)[1]
+        transcript = open('current_transcript', 'w')
+        transcript.write(f'{choice}-{str(datetime.datetime.now())}\n')
+        transcript.close()
+        text_to_speech.text_to_speech(self.name)
+
 class LoginForm(object):
-    def setupUi(self, Form):
+    def setupUI(self, Form):
         Form.setObjectName("SpaceOut Login")
         Form.resize(500, 756)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
@@ -143,7 +239,7 @@ class LoginForm(object):
         self.horizontalLayout_3.addWidget(self.widget)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
-        self.retranslateUi(Form)
+        self.retranslateUI(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def open_register_link(self):
@@ -159,15 +255,15 @@ class LoginForm(object):
             f = open('.userinfo', 'w')
             f.write(self.username.text())
             f.close()
-            app.quit()
+            main()
         else:
             msg = QtWidgets.QMessageBox()
             msg.setText('Incorrect Login')
             msg.exec_()
 
-    def retranslateUi(self, Form):
+    def retranslateUI(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("SpaceOut", "SpaceOut"))
         self.label.setText(_translate("Form", "<html><head/><body><p><img src=\":/src/spaceout.png\"/></p></body></html>"))
         self.label_2.setText(_translate("Form", "<html><head/><body><p><img src=\":/src/user.png\"/></p></body></html>"))
         self.label_3.setText(_translate("Form", "<html><head/><body><p><img src=\":/src/password.png\"/></p></body></html>"))
@@ -176,23 +272,7 @@ class LoginForm(object):
 
 import spaceout_rc
 
+
+
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    try:
-        f = open('.userinfo')
-        username = f.read()
-        f.close()
-        password = keyring.get_password('spaceout', username)
-        r = requests.get(f'{API_ENDPOINT}profile', auth=HTTPBasicAuth(username, password)) 
-        if not r.ok:
-            raise Exception
-
-    except:
-        Form = QtWidgets.QWidget()
-        ui = LoginForm()
-        ui.setupUi(Form)
-        Form.show()
-
-
-    sys.exit(app.exec_())
+    main()
