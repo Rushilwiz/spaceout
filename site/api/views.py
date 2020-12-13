@@ -1,13 +1,15 @@
+import time
+from functools import wraps
+
+from django.db import Error, OperationalError
 from django.http import HttpResponse
 from django.views.generic import View
-from django.db import Error, OperationalError
 from psycopg2 import errorcodes
-from functools import wraps
 from rest_framework import status
-from .serializers import *
-import time
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from .serializers import *
 
 
 # Create your views here.

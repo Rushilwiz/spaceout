@@ -9,9 +9,10 @@ djangorestframework = "*"
 django-cockroachdb = "*"
 psycopg2 = "*"
 pillow = "*"
-djoser = "*"
 
 [dev-packages]
+isort = "*"
+black = "*"
 
 [requires]
 python_version = "3.8"

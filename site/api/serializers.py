@@ -1,6 +1,6 @@
 from djoser.serializers import TokenSerializer
 from rest_framework import serializers
-from djoser.conf import settings as djoser_settings
+
 from .models import *
 
 
