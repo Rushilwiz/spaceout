@@ -55,6 +55,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -94,16 +95,16 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE' : 'django_cockroachdb',
-#        'NAME' : 'spaceout',
-#        'USER' : 'spaceout',
-#        'PASSWORD': r"eVYfYQ`W.`y3AW%'[hdyVR.cn,_[mP5h,$~.7#(8SM8@Z8=T:(",
-#        'HOST' : 'spaceout-86g.gcp-us-east4.cockroachlabs.cloud',
-#        'PORT' : 26257,
-#    }
-# }
+#DATABASES = {
+#   'default': {
+#       'ENGINE' : 'django_cockroachdb',
+#       'NAME' : 'spaceout',
+#       'USER' : 'spaceout',
+#       'PASSWORD': r"eVYfYQ`W.`y3AW%'[hdyVR.cn,_[mP5h,$~.7#(8SM8@Z8=T:(",
+#       'HOST' : 'spaceout-86g.gcp-us-east4.cockroachlabs.cloud',
+#       'PORT' : 26257,
+#   }
+#}
 
 
 # Password validation
@@ -141,13 +142,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-STATIC_URL = "/static/"
-
-## Custom
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+import os
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 LOGIN_REDIRECT_URL = "landing_page"
 LOGIN_URL = "login"

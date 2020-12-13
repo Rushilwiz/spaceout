@@ -10,7 +10,8 @@ django-cockroachdb = "*"
 psycopg2 = "*"
 pillow = "*"
 django-crispy-forms = "*"
-djoser = "*"
+whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 isort = "*"
