@@ -1,4 +1,19 @@
-### SpaceOut! ###
+<p align="center">
+  <a href="https://github.com/rushilwiz/spaceout">
+    <img src=".github/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h1 align="center">SpaceOut!</h1>
+
+</p>
+
+![GitHub language](https://img.shields.io/github/languages/top/rushilwiz/spaceout?color=FF6663)
+![GitHub language count](https://img.shields.io/github/languages/count/rushilwiz/spaceout?color=FEB144)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rushilwiz/spaceout?color=FAFD7B)
+![GitHub repo size](https://img.shields.io/github/repo-size/rushilwiz/spaceout?color=9EE09E)
+![GitHub](https://img.shields.io/github/license/rushilwiz/spaceout?color=9EC1CF)
+![GitHub last commit](https://img.shields.io/github/last-commit/rushilwiz/spaceout?color=CC99C9)
+
 ---
 
 ## Inspiration
