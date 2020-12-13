@@ -35,4 +35,5 @@ urlpatterns = [
     path("create_user/", register_view, name="create_user"),
     path("", home_view, name="home"),
     path("classes", class_form_view, name="classroom_form"),
+    path("classes/<int:id>", classroom_view, name="class")
 ]

@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-
+from django.http import HttpResponseForbidden
 from api.models import *
 
 from .forms import *
@@ -58,3 +58,10 @@ def class_form_view(request):
         form = ClassroomForm
 
     return render(request, "frontend/classroomForm.html", {"form": form})
+
+
+def classroom_view(request, id):
+    classroom = Classroom.objects.get(id=id)
+    if classroom.student.user.pk != request.user.pk:
+        return HttpResponseForbidden('You do not have access to this class')
+    return render(request, "frontend/class.html", {'class': classroom})

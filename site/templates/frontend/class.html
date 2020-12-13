@@ -1,0 +1,32 @@
+{% extends 'frontend/index.html' %}
+{% load static %}
+
+{% block content %}
+<section class="mbr-section content4 cid-qxVpIJ8WtD" id="content4-na" data-rv-view="8245" style="min-height: 100vh;">
+
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center pb-3 mbr-fonts-style display-2">
+                    Your Class: {{ class.name }}</h2>
+            </div>
+        </div>
+        <hr style="border-color: white;">
+        <br><br>
+        <div class="class_cont container class center centered m-10">
+            <h3>Teacher: {{ class.teacher }}</h3>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+{% block head %}
+    <style>
+    .class{
+        color: white;
+    }
+    .class_cont {
+        text-align: center;
+    }
+    </style>
+{% endblock %}
