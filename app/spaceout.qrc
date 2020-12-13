@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="src">
+    <file>user.png</file>
+    <file>password.png</file>
+    <file>spaceout.png</file>
+  </qresource>
+</RCC>
