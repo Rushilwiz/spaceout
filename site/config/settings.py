@@ -98,6 +98,7 @@ DATABASES = {
     }
 }
 
+<<<<<<< HEAD
 # DATABASES = {
 #     'default': {
 #         'ENGINE' : 'django_cockroachdb',
@@ -108,6 +109,18 @@ DATABASES = {
 #         'PORT' : 35767,
 #     }
 # }
+=======
+#DATABASES = {
+#    'default': {
+#        'ENGINE' : 'django_cockroachdb',
+#        'NAME' : 'spaceout',
+#        'USER' : 'spaceout',
+#        'PASSWORD': 'spaceout',
+#        'HOST' : 'localhost',
+#        'PORT' : 35767,
+#    }
+#}
+>>>>>>> 07ec7ef3fe47bc84bac30aa9e368410217511f88
 
 
 # Password validation
@@ -147,3 +160,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+## Custom
