@@ -39,10 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'config',
     'rest_framework',
-    'frontend',
     'api',
     'djoser',
-    'rest_framework.authtoken',
 ]
 
 
@@ -149,3 +147,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ## Custom
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]

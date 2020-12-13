@@ -10,13 +10,14 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
     />
-    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}"
-    />
+      {% block head %}{% endblock head %}
   </head>
   <body>
     <div id="main">
-      <div id="app"></div>
+      <div id="app">
+          {% block content %}{% endblock content %}
+      </div>
     </div>
-    <script src="{% static "front_end/main.js" %}"></script>
+    {% block js %}{% endblock js %}
   </body>
 </html>
