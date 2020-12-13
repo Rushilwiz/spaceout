@@ -25,7 +25,7 @@ SECRET_KEY = "^0n$28f^vwgqqrt2y5o-c3-d8pgzcgv0%uqd%j_c-!!1a(te+!"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['donot.space']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

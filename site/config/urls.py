@@ -21,8 +21,8 @@ from frontend import urls as frontend_urls
 from frontend.views import landing_page
 
 urlpatterns = [
+    path("", landing_page, name='landing_page'),
     path("admin/", admin.site.urls),
     path("api/", include(api_urls)),
-    path("", landing_page, name='landing_page'),
     path("out/", include(frontend_urls)),
 ]
