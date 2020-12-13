@@ -9,7 +9,6 @@ djangorestframework = "*"
 django-cockroachdb = "*"
 psycopg2 = "*"
 pillow = "*"
-django-cors-headers = "*"
 djoser = "*"
 
 [dev-packages]
