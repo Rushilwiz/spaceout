@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/rushilwiz/spaceout">
-    <img src=".github/logo.png" alt="Logo" width="80" height="80">
+    <img src=".github/logo.png" alt="Logo" width=960px height=640px>
   </a>
 
   <h1 align="center">SpaceOut!</h1>
