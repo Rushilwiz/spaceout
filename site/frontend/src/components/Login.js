@@ -41,7 +41,7 @@ class Login extends Component {
             password: this.state.password,
           }),
         };
-        fetch("/api/auth/token/login", requestOptions)
+        fetch("/api/auth/token/login/", requestOptions)
           .then((response) => {console.log(response); return response.json();})
           .then((data) => console.log(data));
     }
