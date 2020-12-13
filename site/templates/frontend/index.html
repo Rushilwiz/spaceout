@@ -55,18 +55,20 @@
                     Classroom
                     </a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link link text-white dropdown-toggle display-4"  style="font-size: 20px !important;" href="blog.html" data-toggle="dropdown-submenu" aria-expanded="false">
                     Profile
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="text-white dropdown-item" href="slider.html">
+                        <a class="text-white dropdown-item" href="{% url 'logout' %}">
                             <h6>
-                                Settings
+                                Logout
                             </h6>
                         </a>
                     </div>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </nav>

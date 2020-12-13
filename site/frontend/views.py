@@ -85,3 +85,8 @@ def classroom_edit_view(request, id):
     form = ClassroomForm(instance=classroom)
 
     return render(request, 'frontend/editClassroom.html', {'form': form})
+
+def landing_page(request):
+    if request.user or request.user.is_authenticated:
+        return redirect('home')
+    return render(request, 'frontend/landing.html')

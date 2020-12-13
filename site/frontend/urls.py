@@ -33,7 +33,7 @@ urlpatterns = [
     ),
     path("register/", register_view, name="register"),
     path("create_user/", register_view, name="create_user"),
-    path("", home_view, name="home"),
+    path("home/", home_view, name="home"),
     path("classes", class_form_view, name="classroom_form"),
     path("classes/<int:id>", classroom_view, name="class"),
     path("classes/<int:id>/edit", classroom_edit_view, name="edit_class"),

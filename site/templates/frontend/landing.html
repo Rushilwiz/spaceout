@@ -1,0 +1,81 @@
+{% extends 'frontend/index.html' %}
+{% load static %}
+{% block head %}<link rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
+    <style>
+    .classes{
+        color: white;
+    }
+    .class_cont {
+        text-align: center;
+    }
+    hr {
+        border-color: white;
+    }
+
+    .icon-scroll,
+    .icon-scroll:before {
+        position: absolute;
+        left: 50%;
+        top: 90%;
+    }
+
+    .icon-scroll {
+      width: 40px;
+      height: 70px;
+      margin-left: -20px;
+      top: 50%;
+      margin-top: -35px;
+      box-shadow: inset 0 0 0 1px #fff;
+      border-radius: 25px;
+    }
+
+    .icon-scroll:before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      margin-left: -4px;
+      top: 8px;
+      border-radius: 4px;
+      animation-duration: 1.5s;
+      animation-iteration-count: infinite;
+      animation-name: scroll;
+    }
+
+    @keyframes scroll {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(46px);
+        }
+    }
+
+
+    </style>
+
+{% endblock %}
+{% block content %}
+<section class="showcase">
+            <div class="video-container">
+                <video src="http://video2.ignitemotion.com/files/mp4/earthAnimation02.mp4" autoplay muted loop></video>
+            </div>
+            <div class="content">
+                <h1>Do Not Space Out</h1>
+                <h3>Just Don't. We'll Help you!</h3>
+                <a href="{% url 'login' %}" class="btn">Login</a>
+                <br><br><br>
+        <div class="media-container-column mbr-white col-md-12 m-t-10 p-t-10"><div class='icon-scroll'><div/></div>
+            </div>
+		</section>
+
+		<section id="about">
+			<h1>About</h1>
+			<p>
+				This is a landing page with a full screen video background. Feel free to
+				use this landing page in your projects. keep adding sections, change the
+				video, content , etc
+			</p>
+		</section>
+{% endblock %}

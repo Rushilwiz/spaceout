@@ -18,10 +18,11 @@ from django.urls import include, path
 
 from api import urls as api_urls
 from frontend import urls as frontend_urls
+from frontend.views import landing_page
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(api_urls)),
-    path("", include(frontend_urls)),
+    path("", landing_page, name='landing_page'),
     path("out/", include(frontend_urls)),
 ]
